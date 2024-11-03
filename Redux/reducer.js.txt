@@ -1,0 +1,21 @@
+// store/reducer.js
+const initialState = [
+  { id: '1', name: 'Product 1' },
+  { id: '2', name: 'Product 2' },
+  { id: '3', name: 'Product 3' },
+  { id: '4', name: 'Product 4' },
+  { id: '5', name: 'Product 5' },
+];
+
+export default function productReducer(state = initialState, action) {
+  switch (action.type) {
+    case 'ADD_PRODUCT':
+      const nextId = (parseInt(state[state.length - 1].id) + 1).toString();
+      return [
+        ...state,
+        { id: nextId, name: `Product ${nextId}` },
+      ];
+    default:
+      return state;
+  }
+}
